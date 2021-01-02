@@ -1,0 +1,38 @@
+<%- include('./partials/head.ejs') %>
+
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <div class="container">
+        <%- include('./partials/heading.ejs') %>
+
+        <div class="row">
+            <div class="col mx-4">
+                <p class="">First of all, this app is basically a test project for me. It's done to just test out my skills with <bold
+                    class="font-weight bold">Node.js, Express and mongoDB.</bold>. Also, much wasn't put into the UI as to give it a better look and feel. It's because this project mainy concentrates on the back-end functionalities.
+                </p>
+                <h3 class="text-capitalize">
+                    Now about this app 
+                </h3>
+                <p>
+                    This is a web app and it's more like an open source book library (For some reason, I call it bookstore. Maybe because of future updates i intend on implementing on it.
+                </p>
+                <p>
+                    On this app, anyone can upload a book for everyone around the world to be able to read. All you have to do is click the add a book button on the home page and add the required information on the form that pops up. The information required includes
+                    <ul>
+                        <li class="text-capitalize">book title</li>
+                        <li class="text-capitalize">author</li>
+                        <li class="text-capitalize">About the book</li>
+                        <li class="text-capitalize">body of the book (the text of all the contents of the book)</li>
+                    </ul>
+                </p>
+
+                <p class="text-center">
+
+                    <a href="/contact" class="btn">Contact Us</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <%- include('./partials/scripts.ejs') %>
+</body>
