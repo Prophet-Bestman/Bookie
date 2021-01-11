@@ -4,7 +4,7 @@ const indexRouter = express.Router();
 indexRouter.get('/', (req, res) => {
     res.render('index', {
         title: 'Home',
-        heading: 'Welcome to our book store'
+        heading: 'The Power To Create Your World'
     });
 });
 

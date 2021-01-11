@@ -7,7 +7,8 @@
         <%- include('./partials/heading.ejs') %>
 
         <div class="row justify-content-center">
-            <form action="/book-store" method="POST" class="add-form">
+            <div class="col-lg-8 form-area">
+                <form action="/book-store" method="POST" class="add-form">
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" id="title" placeholder="Title" name="title">
@@ -24,11 +25,13 @@
                     <label for="body">Book Body</label>
                     <textarea class="form-control" id="body" rows="5" cols="70" name="body"></textarea>
                 </div>
-                <button class="btn btn-outline-light btn">Submit</button>
+                <button class="btn btn-outline-light btn-1">Submit</button>
                 
             </form>
+            </div>
         </div>
     </div>
 
+    <%- include ('./partials/footer.ejs') %>
     <%- include('./partials/scripts.ejs') %>
 </body>

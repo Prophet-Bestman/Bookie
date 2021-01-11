@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser')
 
 const app = express();
 
@@ -8,7 +9,7 @@ const dbURI = 'mongodb+srv://Prophet:ogwuchepman777@cluster1.hgcyb.mongodb.net/b
 // connect to mongodb
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result =>     app.listen(5000, () => {
+    .then((result => app.listen(5000, () => {
         console.log('Listening to Port 5000');
     })))
     .catch((err) => console.log(err))
@@ -18,15 +19,20 @@ app.use(express.static(__dirname + '/public'))
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/js', express.static(__dirname + 'public/js'));
 
+// other middleware
+app.use(morgan('dev'));
+app.use(express.json());
+app.use(cookieParser());
+
 // Templating Engine
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 
-app.use(morgan('dev'));
-
 
 // Routes
+const { checkUser } = require('./middleware/authMiddleware')
+app.get('*', checkUser);
 const indexRouter = require('./src/routes/index');
 app.use('/', indexRouter);
 
@@ -35,6 +41,8 @@ app.use('/', navRouter);
 
 const bookRouter = require('./src/routes/book-store');
 app.use('/', bookRouter);
+const authRoutes = require('./src/routes/authRoutes');
+app.use('/', authRoutes);
 
 
 
@@ -44,5 +52,4 @@ app.use((req, res) => {
         title: 'error',
         heading: 'SORRY! PAGE NOT FOUND:('
     });
-})
-
+});
